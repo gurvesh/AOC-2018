@@ -46,9 +46,9 @@
 (time (def day11-grid' (summed-power-grid 5719)))
 ;; "Elapsed time: 799.034868 msecs"
 
-(time (best2 day11-grid' 3))
-;; "Elapsed time: 342.182923 msecs"
-;; [[29 21 34] 3]
+(time (best day11-grid' 3))
+;; "Elapsed time: 204.688922 msecs"
+;; [3 [[21 34] 29]]
 
 Part 2
 (time (->> (pmap #(best day11-grid' %) (range 3 301))
