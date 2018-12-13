@@ -111,8 +111,10 @@
                               {:collision #{} :locs initial-cart-locs}))))
 					 
  ;; Part 2
- (time (first (drop-while (fn [state]
+(time (first (drop-while (fn [state]
                              (> (count (:locs state)) 1))
-                         (remove #(empty? (:collision %))
-                                 (iterate (partial next-tick pure-grid)
-                                          {:collision #{} :locs initial-cart-locs})))))
+                         (iterate (partial next-tick pure-grid)
+                                 {:collision #{} :locs initial-cart-locs}))))
+
+;; "Elapsed time: 836.30571 msecs"
+;; {:collision #{[47 39]}, :locs ([[123 36] :up 3933])}
