@@ -14,7 +14,7 @@
          :n n'
          :scores new-scores}))
          
-(def starting {:i 0, :j 1, :n 2, :scores (sorted-map 0 3, 1 7)})
+(def starting {:i 0, :j 1, :n 2, :scores {0 3, 1 7}})
 
 (defn get-last-x [x {:keys [n scores] :as full}]
     (let [s (map #(scores %) (range (- n x 1) n))]
@@ -25,7 +25,7 @@
                   first
                   (get-last-x 10))))
                   
-"Elapsed time: 3109.965919 msecs"
+;; "Elapsed time: 1357.111632 msecs"
 ((3 3 1 3 8 5 1 0 1 0) (3 1 3 8 5 1 0 1 0 2))
 
 (defn match [c [c1 c2 c3]]
@@ -34,7 +34,7 @@
         (= c c3)))
 
 ;; The answer for the 2nd part is either the one below, or below-1. This is because of the way the map above is constructed.
-;; Not the best code, and takes about 5 mins :( but gets the job done
+;; Not the best code, and takes about 3 mins :( but gets the job done
 
 (time (->> (iterate next-tick starting)
            (drop-while #(not (match '(6 3 7 0 6 1) (get-last-x 6 %))))
@@ -42,5 +42,5 @@
            :n
            (#(- % 6))))
 
-"Elapsed time: 339087.912459 msecs"
+;; "Elapsed time: 175296.735223 msecs"
 20179082
