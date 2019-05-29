@@ -143,7 +143,7 @@
                (seq (input-map \E)))
       (reduce (fn [[input-map strength-map elf-strength] loc]
                 (if (strength-map loc) ;; Player is still alive
-                  (conj (player-turn' loc [input-map strength-map] elf-strength)
+                  (conj (player-turn loc [input-map strength-map] elf-strength)
                         elf-strength)
                   [input-map strength-map elf-strength]))
               [input-map strength-map elf-strength]
